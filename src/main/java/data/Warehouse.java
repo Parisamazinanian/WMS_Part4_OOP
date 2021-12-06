@@ -10,26 +10,26 @@ public class Warehouse {
 
     public Warehouse(int id) {
         this.id = id;
-        this.stock = new ArrayList<Item>();
+        stock = new ArrayList<Item>();
     }
 
 
-    public void Warehouse(int warehouseId){
+  /*  public void Warehouse(int warehouseId){
 
-    }
+    }*/
 
     public int occupancy(){
-        return this.stock.size();
+        return stock.size();
     }
 
     public void addItem(Item item){
-        this.stock.add(item);
+        stock.add(item);
 
     }
 
     public List<Item> search(String searchTerm) {
         List<Item> result = new ArrayList<>();
-        for (Item item:this.stock) {
+        for (Item item:stock) {
             //depends how we want to search
             if(searchTerm.toLowerCase().equals(item.toString())){
                 result.add(item);
@@ -43,7 +43,7 @@ public class Warehouse {
     }
 
     public List<Item> getStock() {
-        return this.stock;
+        return stock;
     }
 }
 

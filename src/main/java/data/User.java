@@ -28,7 +28,7 @@ public class User {
         }
     }
 
-    private void greet(){
+    public void greet(){
         System.out.println("Hello, "+ this.name +"!\n"+
                 "Welcome to our Warehouse Database.\n If you don't find what you are looking for," +
                 "\nplease ask one of our staff members to assist you.");

@@ -18,7 +18,7 @@ import org.json.simple.JSONValue;
  * @author pujanov
  *
  */
-public class WarehouseRepositoryn {
+public class WarehouseRepository {
 
 
     public static List<Warehouse> WAREHOUSE_LIST = new ArrayList<Warehouse>();

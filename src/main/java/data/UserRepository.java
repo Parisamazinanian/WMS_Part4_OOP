@@ -30,7 +30,7 @@ public class UserRepository {
         try {
             EMPLOYEE_LIST.clear();
 
-            reader = new BufferedReader(new FileReader("./data/personnel.json"));
+            reader = new BufferedReader(new FileReader("/Users/temporaryadmin/Documents/DCI/WM_individual_project/WMS_4thPart_OOP/src/main/resources/personnel.json"));
             Object data = JSONValue.parse(reader);
             if (data instanceof JSONArray) {
                 JSONArray dataArray = (JSONArray) data;
