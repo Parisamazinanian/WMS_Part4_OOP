@@ -18,8 +18,9 @@ import org.json.simple.JSONValue;
  * @author pujanov
  *
  */
+public class WarehouseRepositoryn {
 
-public class WarehouseRepository {
+
     public static List<Warehouse> WAREHOUSE_LIST = new ArrayList<Warehouse>();
     private static List<Integer> WAREHOUSE_IDS = new ArrayList<Integer>();
 
@@ -33,7 +34,7 @@ public class WarehouseRepository {
             //ITEM_LIST.clear();
             WAREHOUSE_LIST.clear();
 
-            reader = new BufferedReader(new FileReader("./data/stock.json"));
+            reader = new BufferedReader(new FileReader("/Users/temporaryadmin/Documents/DCI/WM_individual_project/WMS_4thPart_OOP/src/main/resources/stock.json"));
             Object data = JSONValue.parse(reader);
             if (data instanceof JSONArray) {
                 JSONArray dataArray = (JSONArray) data;
@@ -57,8 +58,8 @@ public class WarehouseRepository {
                             warehouse.addItem(item);
                             WAREHOUSE_LIST.add(warehouse);
                         } else {
-                            for(int i=0 ; i< WAREHOUSE_LIST.size(); i++) {
-                                if(WAREHOUSE_LIST.get(i).getId() == jsonWarehouseId) {
+                            for (int i = 0; i < WAREHOUSE_LIST.size(); i++) {
+                                if (WAREHOUSE_LIST.get(i).getId() == jsonWarehouseId) {
                                     WAREHOUSE_LIST.get(i).addItem(item);
                                     //break;
                                 }
@@ -90,19 +91,22 @@ public class WarehouseRepository {
 
         List<Item> allItems = new ArrayList<Item>();
 
-        //for(Warehouse warehouse : WAREHOUSE_LIST) {
-        for(int i=0; i < WAREHOUSE_LIST.size(); i++) {
-            List<Item> itemsWarehouse = new ArrayList<Item>();
-            for(Item item : WAREHOUSE_LIST.get(i).getStock()) {
-                item.setWarehouse(WAREHOUSE_LIST.get(i).getId());
-                itemsWarehouse.add(item);
+        for (Warehouse warehouse : WAREHOUSE_LIST) {
+            for (int i = 0; i < WAREHOUSE_LIST.size(); i++) {
+                List<Item> itemsWarehouse = new ArrayList<Item>();
+                for (Item item : WAREHOUSE_LIST.get(i).getStock()) {
+                    item.setWarehouse(WAREHOUSE_LIST.get(i).getId());
+                    itemsWarehouse.add(item);
+                }
+                allItems.addAll(itemsWarehouse);
             }
-            allItems.addAll(itemsWarehouse);
+
         }
         return allItems;
     }
 
     // By Warehouse
+
     /**
      * Get the list of unique warehouse IDs
      *
@@ -144,6 +148,7 @@ public class WarehouseRepository {
 
 
     // By Category
+
     /**
      * Get the list of unique Categories
      *
